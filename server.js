@@ -13,8 +13,6 @@ let image = require('./routes/image');
 const app = express();
 
 // connecting the database
-// let mongodb_url = 'mongodb+srv://drotich:iEjHMgYNKU8vMFP2@jenkins.avjpxpk.mongodb.net/';
-// let dbName = 'darkroom';
 let mongodb_url = process.env.DATABASE_URL;
 let dbName = process.env.DATABASE_NAME;
 mongoose.connect(`${mongodb_url}${dbName}`,{ useNewUrlParser: true , useUnifiedTopology: true }, (err)=>{
