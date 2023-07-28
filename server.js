@@ -12,17 +12,24 @@ let image = require('./routes/image');
 const app = express();
 
 // connecting the database
+
+const MONGODB_URI = process.env.MONGODB_URI || config.mongoURI[app.settings.env]
 let mongodb_url = 'mongodb+srv://drotich:iEjHMgYNKU8vMFP2@jenkins.avjpxpk.mongodb.net/';
 let dbName = 'darkroom';
 mongoose.connect(`${mongodb_url}${dbName}`,{ useNewUrlParser: true , useUnifiedTopology: true }, (err)=>{
-    if (err) console.log(err)
+    if (err) {
+        console.log(err)
+    }
+        else {
+            console.log(`Connected to Database: ${MONGODB_URI}`)
+        }
 });
 
 // test if the database has connected successfully
 // let db = mongoose.connection;
-// db.once('open', ()=>{
-//     console.log('Database connected successfully')
-// })
+// db.once('open', ()=> {
+//     console.log(`Database connected successfully: ${db}`)
+// });
 
 
 
